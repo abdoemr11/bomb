@@ -15,9 +15,13 @@ WORKDIR /app
 
 ENV TAR_FILE=BombSquad_Server_Linux_x86_64_${BOMBSQUAD_VERSION}
 
-RUN wget https://files.ballistica.net/bombsquad/builds/BombSquad_Server_Linux_x86_64_1.7.33.tar.gz -O bombsquad.tar.gz && \
-    tar -xzf bombsquad.tar.gz --strip-components 1 && \
-    rm -f config.yaml # removing default config file in order to put ourselves
+# RUN wget https://files.ballistica.net/bombsquad/builds/old/BombSquad_Server_Linux_x86_64_1.7.28.tar.gz -O bombsquad.tar.gz && \
+#     tar -xzf bombsquad.tar.gz --strip-components 1 && \
+#     rm -f config.yaml # removing default config file in order to put ourselves
+
+RUN wget https://files.ballistica.net/bombsquad/builds/BombSquad_Server_Linux_x86_64_1.7.33.tar.gz && \
+    tar -xzvf BombSquad_Server_Linux_x86_64_1.7.33.tar.gz  --strip-components 1 && \
+    rm BombSquad_Server_Linux_x86_64_1.7.33.tar.gz
 
 COPY config.yaml .
 
